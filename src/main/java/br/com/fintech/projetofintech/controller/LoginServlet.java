@@ -1,4 +1,4 @@
-/*package br.com.fintech.projetofintech.controller;
+package br.com.fintech.projetofintech.controller;
 
 import br.com.fintech.projetofintech.dao.UsuarioDAO;
 import br.com.fintech.projetofintech.model.Usuario;
@@ -32,4 +32,4 @@ public class LoginServlet extends HttpServlet {
         }
     }
 
-}*/
+}

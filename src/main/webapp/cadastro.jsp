@@ -3,8 +3,7 @@
 <html lang="pt-br">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Login - Controle Financeiro</title>
+  <title>Cadastro</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <style>
     body {
@@ -26,43 +25,49 @@
       font-size: 1.5rem;
       font-weight: bold;
       margin-bottom: 1rem;
-      color: #f25c3b;
     }
-    .form-label {
-      color: #6c757d;
-      font-weight: 500;
-    }
-    .btn-login {
-      background-color: #64d2e6;
+    .btn-cadastrar {
+      background-color: #007bff;
       color: white;
     }
-    .btn-login:hover {
-      background-color: #53c0d3;
+    .btn-cadastrar:hover {
+      background-color: #0069d9;
     }
   </style>
 </head>
 <body>
 <div class="container">
   <div class="card mx-auto">
-    <h2 class="form-title text-center">Fazer Login</h2>
-    <% String erro = (String) request.getAttribute("erroLogin"); %>
+    <h2 class="form-title text-center">Crie sua conta</h2>
+
+    <% String erro = (String) request.getAttribute("erroCadastro"); %>
     <% if (erro != null) { %>
     <div class="alert alert-danger text-center" role="alert">
       <%= erro %>
     </div>
     <% } %>
 
-    <form action="login" method="post">
+    <form action="cadastro" method="post">
       <div class="mb-3">
-        <label for="email" class="form-label">Email</label>
-        <input type="email" class="form-control" id="email" name="email" required>
+        <input type="text" class="form-control" name="nome" placeholder="Nome" required>
       </div>
       <div class="mb-3">
-        <label for="senha" class="form-label">Senha</label>
-        <input type="password" class="form-control" id="senha" name="senha" required>
+        <input type="text" class="form-control" name="sobrenome" placeholder="Sobrenome" required>
+      </div>
+      <div class="mb-3">
+        <input type="date" class="form-control" name="dataNascimento" required>
+      </div>
+      <div class="mb-3">
+        <input type="email" class="form-control" name="email" placeholder="Email" required>
+      </div>
+      <div class="mb-3">
+        <input type="password" class="form-control" name="senha" placeholder="Senha" required>
+      </div>
+      <div class="mb-3">
+        <input type="password" class="form-control" name="confirmarSenha" placeholder="Confirmar Senha" required>
       </div>
       <div class="d-grid">
-        <button type="submit" class="btn btn-login">Entrar</button>
+        <button type="submit" class="btn btn-cadastrar">Cadastrar</button>
       </div>
     </form>
     <div class="text-center mt-3">
@@ -72,4 +77,5 @@
 </div>
 </body>
 </html>
-</html>
+
+
