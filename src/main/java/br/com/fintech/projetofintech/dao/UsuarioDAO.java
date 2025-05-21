@@ -1,4 +1,4 @@
-/*package br.com.fintech.projetofintech.dao;
+package br.com.fintech.projetofintech.dao;
 
 import br.com.fintech.projetofintech.model.Usuario;
 
@@ -17,7 +17,7 @@ public class UsuarioDAO {
 
         try {
             conn = ConnectionManager.getInstance().getConnection();
-            String sql = "SELECT * FROM USUARIO WHERE EMAIL = ? AND SENHA = ?";
+            String sql = "SELECT * FROM T_FIN_USUARIO WHERE EMAIL = ? AND SENHA = ?";
             stmt = conn.prepareStatement(sql);
             stmt.setString(1, email);
             stmt.setString(2, senha);
@@ -48,4 +48,4 @@ public class UsuarioDAO {
         return usuario;
     }
 
-}*/
+}

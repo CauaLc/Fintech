@@ -124,16 +124,28 @@
 
 </head>
 <body>
-<%--<%@ page import="br.com.fintech.projetofintech.model.Usuario" %>
+<%@ page import="br.com.fintech.projetofintech.model.Usuario" %>
+<%@ page import="br.com.fintech.projetofintech.model.Transacao" %>
+<%@ page import="java.util.List" %>
 <%
   Usuario usuario = (Usuario) session.getAttribute("usuarioLogado");
+  double entradas = 0;
+  double saidas = 0;
+  double saldo = 0;
+  List<Transacao> transacoes = (List<Transacao>) request.getAttribute("transacoes");
   if (usuario == null) {
     response.sendRedirect("login.jsp");
     return;
   }
+  for (Transacao t : transacoes) {
+    if (t.getTipoTransacao().equals("ENTRADA")){
+      entradas = entradas + t.getValor();
+    }else {
+      saidas = saidas + t.getValor();
+    }
+  }
+  saldo = entradas - saidas;
 %>
-
-<h4>Bem-vindo, <%= usuario.getNome() %>!</h4>--%>
 
 
 <div class="container mt-4">
@@ -141,15 +153,15 @@
 
   <div class="card-saldo text-center">
     <h6 class="text-muted">Outubro <i class="bi bi-chevron-down"></i></h6>
-    <h4><strong>Saldo: R$ 2.000,00</strong></h4>
+    <h4><strong>Saldo: R$<%= saldo %> </strong></h4>
     <div class="d-flex justify-content-around mt-3">
       <div class="text-success">
         <i class="bi bi-arrow-up-circle-fill"></i><br>
-        Entrada: <strong>R$ 4.000,00</strong>
+        Entrada: <strong>R$ <%= entradas%></strong>
       </div>
       <div class="text-danger">
         <i class="bi bi-arrow-down-circle-fill"></i><br>
-        Saída: <strong>R$ 2.000,00</strong>
+        Saída: <strong>R$ <%= saidas%></strong>
       </div>
     </div>
   </div>
@@ -177,18 +189,16 @@
   <div class="card-transacoes">
     <h6><strong>Recentes</strong></h6>
     <ul class="list-group list-group-flush mt-3">
+      <%
+        for (Transacao t : transacoes) {
+      %>
       <li class="list-group-item d-flex justify-content-between align-items-center px-0">
-        <div><i class="bi bi-house-door"></i> Aluguel</div>
-        <span><strong>R$ 1.000,00</strong></span>
+        <div><i class="bi bi-house-door"></i> <%=t.getNomeTransacao()%></div>
+        <span><strong>R$ <%= t.getValor()%></strong></span>
       </li>
-      <li class="list-group-item d-flex justify-content-between align-items-center px-0">
-        <div><i class="bi bi-lightbulb"></i> Conta de Luz</div>
-        <span><strong>R$ 200,00</strong></span>
-      </li>
-      <li class="list-group-item d-flex justify-content-between align-items-center px-0">
-        <div><i class="bi bi-droplet"></i> Conta de Água</div>
-        <span><strong>R$ 100,00</strong></span>
-      </li>
+      <%
+        }
+      %>
     </ul>
   </div>
 

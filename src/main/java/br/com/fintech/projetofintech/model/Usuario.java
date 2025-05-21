@@ -1,4 +1,4 @@
-/*package br.com.fintech.projetofintech.model;
+package br.com.fintech.projetofintech.model;
 
 import java.util.Date;
 
@@ -59,5 +59,5 @@ public class Usuario {
     public void setDataNascimento(Date dataNascimento) {
         this.dataNascimento = dataNascimento;
     }
-}*/
+}
 
