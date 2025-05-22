@@ -68,11 +68,11 @@
         </div>
 
         <div class="d-grid gap-2">
-            <a href="#" class="btn btn-google">
-                <img src="https://developers.google.com/identity/images/g-logo.png" width="20" class="me-2">Continuar com Google
+            <a href="cadastro.jsp" class="btn btn-google">
+                <img src="./resources/img/icone-cadastro.png" width="28" class="me-2">CADASTRE-SE
             </a>
             <a href="login.jsp" class="btn btn-email">
-                <img src="https://img.icons8.com/ios-filled/50/ffffff/new-post.png" width="20" class="me-2">Continuar com email
+                <img src="https://img.icons8.com/ios-filled/50/ffffff/new-post.png" width="20" class="me-2">LOGIN
             </a>
         </div>
     </div>
