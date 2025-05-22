@@ -54,7 +54,7 @@ public class UsuarioDAO {
 
             if (rs.next()) {
                 usuario = new Usuario();
-                /*usuario.setId(rs.getInt("ID_USUARIO"));*/ //Teste sem Id funcionou
+                usuario.setId(rs.getInt("ID_USUARIO")); //Teste sem Id funcionou
                 usuario.setNome(rs.getString("NM_NOME"));
                 usuario.setSobrenome(rs.getString("NM_SOBRENOME"));
                 usuario.setEmail(rs.getString("EMAIL"));
