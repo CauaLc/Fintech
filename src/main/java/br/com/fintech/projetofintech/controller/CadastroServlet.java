@@ -42,7 +42,7 @@ public class CadastroServlet extends HttpServlet {
             usuario.setSobrenome(sobrenome);
             usuario.setEmail(email);
             usuario.setSenha(senha);
-            usuario.setDataNascimento(new SimpleDateFormat("dd-MM-yyyy").parse(dataNascimentoStr));
+            usuario.setDataNascimento(new SimpleDateFormat("yyyy-MM-dd").parse(dataNascimentoStr));
 
             UsuarioDAO usuarioDAO = new UsuarioDAO();
             usuarioDAO.inserir(usuario);

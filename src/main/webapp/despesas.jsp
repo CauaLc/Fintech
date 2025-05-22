@@ -1,5 +1,16 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-         pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page import="br.com.fintech.projetofintech.model.Usuario" %>
+<%@ page import="java.text.SimpleDateFormat" %>
+<%
+  Usuario usuario = (Usuario) session.getAttribute("usuarioLogado");
+  if (usuario == null) {
+    response.sendRedirect("login.jsp");
+    return;
+  }
+  String nomeCompleto = usuario.getNome() + " " + usuario.getSobrenome();
+  String email = usuario.getEmail();
+  String dataCriacao = new SimpleDateFormat("dd/MM/yyyy").format(usuario.getDataNascimento());
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -109,7 +120,7 @@
 
 
 <div class="footer d-flex justify-content-around py-2">
-  <a href="dashboard.jsp"><i class="bi bi-house-door text-decoration-none text-dark fs-5 "></i><br></a>
+  <a href="<%= "./dashboard?idUsuario=" + usuario.getId() %>"><i class="bi bi-house-door text-decoration-none text-dark fs-5 "></i><br></a>
   <a href="#"><i class="bi bi-currency-dollar icons text-decoration-none text-dark fs-5"></i><br></a>
   <a href="perfil.jsp"><i class="bi bi-person icons text-decoration-none text-dark fs-5"></i><br></a>
 </div>

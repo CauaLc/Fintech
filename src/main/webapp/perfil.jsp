@@ -56,7 +56,9 @@
           <hr>
 
           <div class="d-grid gap-2 col-10 mx-auto">
-            <a href="dashboard.jsp" class="btn btn-outline-secondary btn-edit"><i class="bi bi-arrow-left-circle me-2"></i>Voltar</a>
+            <a href="<%= "./dashboard?idUsuario=" + usuario.getId() %>" class="btn btn-outline-secondary btn-edit">
+              <i class="bi bi-arrow-left-circle me-2"></i>Voltar
+            </a>
             <a href="login.jsp" class="btn btn-danger btn-edit"><i class="bi bi-box-arrow-right me-2"></i>Sair</a>
           </div>
         </div>

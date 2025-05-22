@@ -1,4 +1,16 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page import="br.com.fintech.projetofintech.model.Usuario" %>
+<%@ page import="java.text.SimpleDateFormat" %>
+<%
+  Usuario usuario = (Usuario) session.getAttribute("usuarioLogado");
+  if (usuario == null) {
+    response.sendRedirect("login.jsp");
+    return;
+  }
+  String nomeCompleto = usuario.getNome() + " " + usuario.getSobrenome();
+  String email = usuario.getEmail();
+  String dataCriacao = new SimpleDateFormat("dd/MM/yyyy").format(usuario.getDataNascimento());
+%>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -72,8 +84,8 @@
 <div class="container-fluid px-3 px-md-5">
   <div class="header text-center">
     <div class="d-flex justify-content-start">
-      <a href="dashboard.jsp" class="text-white text-decoration-none">
-        <i class="bi bi-arrow-left"></i> Cadastrar Transação
+      <a href="<%= "./dashboard?idUsuario=" + usuario.getId() %>" class="text-white text-decoration-none">
+        <i class="bi bi-arrow-left"></i> Voltar
       </a>
     </div>
     <div class="mt-3 valor-gasto">Valor gasto:</div>
