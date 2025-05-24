@@ -1,6 +1,7 @@
 package br.com.fintech.projetofintech.dao;
 
 import br.com.fintech.projetofintech.model.Entrada;
+import br.com.fintech.projetofintech.model.Saida;
 import br.com.fintech.projetofintech.model.Transacao;
 
 import java.sql.*;
@@ -29,7 +30,7 @@ public class TransacoesDAO {
             stmt1.setInt(1, entrada.getIdUsuario());
             stmt1.setString(2, entrada.getNome());
             stmt1.setDouble(3, entrada.getValor());
-            stmt1.setString(4, entrada.getDataTransacao());
+            stmt1.setString(4, entrada.getDataTransacao().toString());
             stmt1.setString(5, entrada.getCategoria());
             stmt1.executeUpdate();
 
@@ -41,6 +42,44 @@ public class TransacoesDAO {
             connection.rollback();
             throw e;
         }
+    }
+
+    public void inserirSaida(Saida dto) throws SQLException {
+        connection = ConnectionManager.getInstance().getConnection();
+
+        String sqlTransacao =
+                "INSERT INTO T_FIN_TRANSACAO " +
+                        "(ID_TRANSACAO, ID_USUARIO, NOME, DESCRICAO, VALOR, DATA_TRANSACAO, CATEGORIA) " +
+                        "VALUES (SEQ_TRANSACAO.NEXTVAL, ?, ?, ?, ?, TO_DATE(?, 'YYYY-MM-DD'), ?)";
+        String sqlSaida =
+                "INSERT INTO T_FIN_SAIDA (ID_TRANSACAO, ID_CARTAO) " +
+                        "VALUES (SEQ_TRANSACAO.CURRVAL, ?)";
+
+
+             PreparedStatement ps1 = connection.prepareStatement(sqlTransacao);
+             PreparedStatement ps2 = connection.prepareStatement(sqlSaida);
+
+            connection.setAutoCommit(false);
+
+            // 1) T_FIN_TRANSACAO
+            ps1.setInt(1, dto.getIdUsuario());
+            ps1.setString(2, dto.getDescricao());
+            ps1.setString(3, dto.getDescricao());
+            ps1.setBigDecimal(4, dto.getValor());
+            ps1.setString(5, dto.getDataTransacao().toString());
+            ps1.setString(6, dto.getCategoria());
+            ps1.executeUpdate();
+
+            // 2) T_FIN_SAIDA
+            if (dto.getIdCartao() != null) {
+                ps2.setInt(1, dto.getIdCartao());
+            } else {
+                ps2.setNull(1, java.sql.Types.INTEGER);
+            }
+            ps2.executeUpdate();
+
+            connection.commit();
+
     }
 
     public List<Transacao> listarPorUsuario(Long idUsuario) throws SQLException {

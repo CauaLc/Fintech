@@ -8,6 +8,7 @@ import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
 import java.io.IOException;
 import java.sql.SQLException;
+import java.time.LocalDate;
 
 @WebServlet("/entrada")
 public class InserirEntradaServlet extends HttpServlet {
@@ -23,10 +24,10 @@ public class InserirEntradaServlet extends HttpServlet {
         String valorStr = request.getParameter("valor");
         valorStr = valorStr.replace(".", "").replace(",", ".");
         double valor = Double.parseDouble(valorStr);
-        String dataTransacao = request.getParameter("dataTransacao");
+        LocalDate dataTransacao = LocalDate.parse(request.getParameter("data"));
         String categoria = request.getParameter("categoria");
 
-        System.out.println("Categoria recebida: " + categoria);
+        System.out.println("Data recebida: " + dataTransacao);
 
 
         // Criar o objeto entrada
