@@ -53,6 +53,10 @@
       font-size: 1.2rem;
     }
 
+    a{
+      text-decoration: none;
+    }
+
     .footer {
       position: fixed;
       bottom: 0;
@@ -121,7 +125,10 @@
 
 <div class="footer d-flex justify-content-around py-2">
   <a href="<%= "./dashboard?idUsuario=" + usuario.getId() %>"><i class="bi bi-house-door text-decoration-none text-dark fs-5 "></i><br></a>
-  <a href="#"><i class="bi bi-currency-dollar icons text-decoration-none text-dark fs-5"></i><br></a>
+  <a href="<%= "./historico?idUsuario=" + usuario.getId() %>"<span>
+      <i class="bi bi-arrow-up-short text-decoration-none text-dark"></i>
+      <i class="bi bi-arrow-down-short text-decoration-none text-dark"></i>
+    </span></a>
   <a href="perfil.jsp"><i class="bi bi-person icons text-decoration-none text-dark fs-5"></i><br></a>
 </div>
 

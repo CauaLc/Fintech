@@ -100,13 +100,13 @@
     <div class="form-section">
       <h5 class="mb-2">Categorias</h5>
       <div class="category-grid">
-        <input type="radio" class="btn-check" name="categoria" id="cat1" value="SALARIO" autocomplete="off" checked>
+        <input type="radio" class="btn-check d-flex align-items-center" name="categoria" id="cat1" value="SALARIO" autocomplete="off" checked>
         <label class="btn btn-light icon-btn btn-categoria" for="cat1"><i class="bi bi-wallet2"></i></label>
 
-        <input type="radio" class="btn-check" name="categoria" id="cat2" value="INVESTIMENTO" autocomplete="off">
+        <input type="radio" class="btn-check d-flex align-items-center" name="categoria" id="cat2" value="INVESTIMENTO" autocomplete="off">
         <label class="btn btn-light icon-btn btn-categoria" for="cat2"><i class="bi bi-piggy-bank"></i></label>
 
-        <input type="radio" class="btn-check" name="categoria" id="cat3" value="OUTROS" autocomplete="off">
+        <input type="radio" class="btn-check d-flex align-items-center" name="categoria" id="cat3" value="OUTROS" autocomplete="off">
         <label class="btn btn-light icon-btn btn-categoria" for="cat3"><i class="bi bi-plus-lg"></i></label>
       </div>
 

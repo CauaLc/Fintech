@@ -190,7 +190,9 @@
     <h6><strong>Recentes</strong></h6>
     <ul class="list-group list-group-flush mt-3">
       <%
-        for (Transacao t : transacoes) {
+        int limite = Math.min(transacoes.size(), 3);
+        for (int i = 0; i < limite; i++) {
+          Transacao t = transacoes.get(i);
       %>
       <li class="list-group-item d-flex justify-content-between align-items-center px-0">
         <div><i class="bi bi-house-door"></i> <%=t.getNomeTransacao()%></div>
@@ -199,6 +201,7 @@
       <%
         }
       %>
+
     </ul>
   </div>
 
@@ -206,7 +209,11 @@
 
 <div class="footer-nav">
   <a href="#"><i class="bi bi-house-door"></i><br>Início</a>
-  <a href="#"><i class="bi bi-currency-dollar"></i><br>Carteira</a>
+  <a href="<%= "./historico?idUsuario=" + usuario.getId() %>"
+  <span>
+      <i class="bi bi-arrow-up-short"></i>
+      <i class="bi bi-arrow-down-short"></i>
+    </span><br>Histórico</a>
   <button class="add" id="abrirModal"><i class="bi bi-plus"></i></button>
   <a href="despesas.jsp"><i class="bi bi-pie-chart"></i><br>Despesas</a>
   <a href="perfil.jsp"><i class="bi bi-person"></i><br>Perfil</a>

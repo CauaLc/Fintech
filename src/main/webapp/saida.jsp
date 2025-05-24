@@ -52,6 +52,12 @@
       font-size: 1.5rem;
     }
 
+    .icon-btn.selected {
+      background-color: #0d6efd; /* azul bootstrap */
+      border-color: #0d6efd;
+    }
+
+
     .btn-selected {
       background-color: #a8430d !important;
       color: white !important;
@@ -99,16 +105,18 @@
     <div class="form-section">
       <h5 class="mb-2">Categorias</h5>
       <div class="category-grid">
-        <button type="button" class="btn btn-light icon-btn btn-selected" onclick="document.getElementById('categoria').value='ALIMENTACAO'"><i class="bi bi-clock"></i></button>
-        <button type="button" class="btn btn-light icon-btn" onclick="document.getElementById('categoria').value='SERVICOS'"><i class="bi bi-file-earmark-text"></i></button>
-        <button type="button" class="btn btn-light icon-btn" onclick="document.getElementById('categoria').value='TRANSPORTE'"><i class="bi bi-bus-front"></i></button>
-        <button type="button" class="btn btn-light icon-btn" onclick="document.getElementById('categoria').value='SAUDE'"><i class="bi bi-receipt"></i></button>
-        <button type="button" class="btn btn-light icon-btn" onclick="document.getElementById('categoria').value='MERCADO'"><i class="bi bi-apple"></i></button>
-        <button type="button" class="btn btn-light icon-btn" onclick="document.getElementById('categoria').value='LAZER'"><i class="bi bi-camera-video"></i></button>
-        <button type="button" class="btn btn-light icon-btn" onclick="document.getElementById('categoria').value='TECNOLOGIA'"><i class="bi bi-laptop"></i></button>
-        <button type="button" class="btn btn-light icon-btn" onclick="document.getElementById('categoria').value='OUTROS'"><i class="bi bi-plus-lg"></i></button>
+        <button type="button" class="btn btn-light icon-btn d-flex align-items-center " onclick="document.getElementById('categoria').value='SAUDE'"><i class="bi bi-clock"></i></button>
+        <button type="button" class="btn btn-light icon-btn d-flex align-items-center" onclick="document.getElementById('categoria').value='SERVICOS'"><i class="bi bi-file-earmark-text"></i></button>
+        <button type="button" class="btn btn-light icon-btn d-flex align-items-center" onclick="document.getElementById('categoria').value='TRANSPORTE'"><i class="bi bi-bus-front"></i></button>
+        <button type="button" class="btn btn-light icon-btn d-flex align-items-center" onclick="document.getElementById('categoria').value='ALIMENTACAO'"><i class="bi bi-receipt"></i></button>
+        <button type="button" class="btn btn-light icon-btn d-flex align-items-center" onclick="document.getElementById('categoria').value='MERCADO'"><i class="bi bi-apple"></i></button>
+        <button type="button" class="btn btn-light icon-btn d-flex align-items-center" onclick="document.getElementById('categoria').value='LAZER'"><i class="bi bi-camera-video"></i></button>
+        <button type="button" class="btn btn-light icon-btn d-flex align-items-center" onclick="document.getElementById('categoria').value='TECNOLOGIA'"><i class="bi bi-laptop"></i></button>
+        <button type="button" class="btn btn-light icon-btn d-flex align-items-center" onclick="document.getElementById('categoria').value='OUTROS'"><i class="bi bi-plus-lg"></i></button>
       </div>
+
       <input type="hidden" name="categoria" id="categoria" value="ALIMENTACAO" />
+
 
       <h5 class="mt-4">Data</h5>
       <input type="date" name="data" class="form-control mb-3" />
@@ -132,5 +140,6 @@
   </form>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
 </body>
 </html>

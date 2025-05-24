@@ -84,7 +84,7 @@ public class TransacoesDAO {
 
     public List<Transacao> listarPorUsuario(Long idUsuario) throws SQLException {
         connection = ConnectionManager.getInstance().getConnection();
-        String sql = "SELECT * FROM VW_TRANSACOES_USUARIO WHERE ID_USUARIO = ?";
+        String sql = "SELECT * FROM VW_TRANSACOES_USUARIO WHERE ID_USUARIO = ? ORDER BY DATA_TRANSACAO DESC";
         List<Transacao> lista = new ArrayList<>();
 
         try (PreparedStatement stmt = connection.prepareStatement(sql)) {
