@@ -41,6 +41,9 @@
     .valor {
       font-size: 2rem;
       font-weight: bold;
+      border: 0;
+      background: transparent;
+      text-align: center;
     }
 
     .icon-btn {
@@ -80,54 +83,54 @@
   </style>
 </head>
 <body>
+<form action="./saida" method="post">
 
-<div class="container-fluid px-3 px-md-5">
-  <div class="header text-center">
-    <div class="d-flex justify-content-start">
-      <a href="<%= "./dashboard?idUsuario=" + usuario.getId() %>" class="text-white text-decoration-none">
-        <i class="bi bi-arrow-left"></i> Voltar
-      </a>
+  <div class="container-fluid px-3 px-md-5">
+    <div class="header text-center">
+      <div class="d-flex justify-content-start">
+        <a href="<%= "./dashboard?idUsuario=" + usuario.getId() %>" class="text-white text-decoration-none">
+          <i class="bi bi-arrow-left"></i> Voltar
+        </a>
+      </div>
+      <div class="mt-3 valor-recebido">Valor recebido:</div>
+      <input type="text" name="valor" class="valor form-control text-center" placeholder="2.000,00" required />
     </div>
-    <div class="mt-3 valor-gasto">Valor gasto:</div>
-    <div class="valor">R$ 100,00</div>
+
+    <div class="form-section">
+      <h5 class="mb-2">Categorias</h5>
+      <div class="category-grid">
+        <button type="button" class="btn btn-light icon-btn btn-selected" onclick="document.getElementById('categoria').value='ALIMENTACAO'"><i class="bi bi-clock"></i></button>
+        <button type="button" class="btn btn-light icon-btn" onclick="document.getElementById('categoria').value='SERVICOS'"><i class="bi bi-file-earmark-text"></i></button>
+        <button type="button" class="btn btn-light icon-btn" onclick="document.getElementById('categoria').value='TRANSPORTE'"><i class="bi bi-bus-front"></i></button>
+        <button type="button" class="btn btn-light icon-btn" onclick="document.getElementById('categoria').value='SAUDE'"><i class="bi bi-receipt"></i></button>
+        <button type="button" class="btn btn-light icon-btn" onclick="document.getElementById('categoria').value='MERCADO'"><i class="bi bi-apple"></i></button>
+        <button type="button" class="btn btn-light icon-btn" onclick="document.getElementById('categoria').value='LAZER'"><i class="bi bi-camera-video"></i></button>
+        <button type="button" class="btn btn-light icon-btn" onclick="document.getElementById('categoria').value='TECNOLOGIA'"><i class="bi bi-laptop"></i></button>
+        <button type="button" class="btn btn-light icon-btn" onclick="document.getElementById('categoria').value='OUTROS'"><i class="bi bi-plus-lg"></i></button>
+      </div>
+      <input type="hidden" name="categoria" id="categoria" value="ALIMENTACAO" />
+
+      <h5 class="mt-4">Data</h5>
+      <input type="date" name="data" class="form-control mb-3" />
+
+      <h5>Cartão</h5>
+      <select name="tipoCartao" class="form-control mb-3">
+        <option value="CREDITO">Crédito</option>
+        <option value="DEBITO" selected>Débito</option>
+      </select>
+
+      <h5>Descrição</h5>
+      <input type="text" name="descricao" class="form-control mb-3" placeholder="Escreva a descrição aqui" />
+
+      <input type="hidden" name="idUsuario" value="<%= usuario.getId() %>" />
+
+      <div class="d-grid">
+        <button type="submit" class="btn btn-primary">Salvar Transação</button>
+      </div>
+    </div>
   </div>
-
-  <div class="form-section">
-    <h5 class="mb-2">Categorias</h5>
-    <div class="category-grid">
-      <button class="btn btn-light icon-btn btn-selected"><i class="bi bi-clock"></i></button>
-      <button class="btn btn-light icon-btn btn-selected"><i class="bi bi-file-earmark-text"></i></button>
-      <button class="btn btn-light icon-btn btn-selected"><i class="bi bi-bus-front"></i></button>
-      <button class="btn btn-light icon-btn btn-selected"><i class="bi bi-receipt"></i></button>
-      <button class="btn btn-light icon-btn btn-selected"><i class="bi bi-apple"></i></button>
-      <button class="btn btn-light icon-btn btn-selected"><i class="bi bi-camera-video"></i></button>
-      <button class="btn btn-light icon-btn btn-selected"><i class="bi bi-laptop"></i></button>
-      <button class="btn btn-light icon-btn btn-selected"><i class="bi bi-plus-lg"></i></button>
-    </div>
-
-    <h5 class="mt-4">Data</h5>
-    <div class="btn-group mb-3" role="group">
-      <button type="button" class="btn btn-toggle btn-outline-secondary">Hoje</button>
-      <button type="button" class="btn btn-toggle btn-outline-secondary">Ontem</button>
-      <button type="button" class="btn btn-toggle btn-outline-secondary">
-        <i class="bi bi-calendar"></i>
-      </button>
-    </div>
-
-    <h5>Cartão</h5>
-    <div class="btn-group mb-3" role="group">
-      <button type="button" class="btn btn-toggle btn-outline-secondary">Crédito</button>
-      <button type="button" class="btn btn-toggle btn-selected">Débito</button>
-    </div>
-
-    <h5>Descrição</h5>
-    <input type="text" class="form-control" placeholder="Escreva a descrição aqui">
-  </div>
-</div>
-
+  </form>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
 </body>
 </html>
-
