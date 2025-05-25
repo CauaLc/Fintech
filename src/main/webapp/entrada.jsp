@@ -64,7 +64,7 @@
     }
 
     .btn-check:checked + .btn-categoria {
-      background-color: #a8430d;
+      background-color: #ADD8E6;
       color: white;
     }
 
@@ -101,13 +101,13 @@
       <h5 class="mb-2">Categorias</h5>
       <div class="category-grid">
         <input type="radio" class="btn-check d-flex align-items-center" name="categoria" id="cat1" value="SALARIO" autocomplete="off" checked>
-        <label class="btn btn-light icon-btn btn-categoria" for="cat1"><i class="bi bi-wallet2"></i></label>
+        <label class="btn btn-light icon-btn btn-categoria d-flex align-items-center w-100" for="cat1"><i class="bi bi-wallet2 me-2"></i>Salário</label>
 
         <input type="radio" class="btn-check d-flex align-items-center" name="categoria" id="cat2" value="INVESTIMENTO" autocomplete="off">
-        <label class="btn btn-light icon-btn btn-categoria" for="cat2"><i class="bi bi-piggy-bank"></i></label>
+        <label class="btn btn-light icon-btn btn-categoria d-flex align-items-center w-100" for="cat2"><i class="bi bi-piggy-bank me-2"></i>Investimento</label>
 
         <input type="radio" class="btn-check d-flex align-items-center" name="categoria" id="cat3" value="OUTROS" autocomplete="off">
-        <label class="btn btn-light icon-btn btn-categoria" for="cat3"><i class="bi bi-plus-lg"></i></label>
+        <label class="btn btn-light icon-btn btn-categoria d-flex align-items-center w-100" for="cat3"><i class="bi bi-plus-lg me-2">Outros</i></label>
       </div>
 
       <h5 class="mt-4">Data</h5>

@@ -63,6 +63,14 @@
       color: white !important;
     }
 
+    .categoria-btn.selecionado {
+      background-color: #FFD8A8 !important; /* Laranja clarinho */
+      border-color: #FFA94D !important;
+      color: #000 !important;
+    }
+
+
+
     .category-grid {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
@@ -105,14 +113,14 @@
     <div class="form-section">
       <h5 class="mb-2">Categorias</h5>
       <div class="category-grid">
-        <button type="button" class="btn btn-light icon-btn d-flex align-items-center " onclick="document.getElementById('categoria').value='SAUDE'"><i class="bi bi-clock"></i></button>
-        <button type="button" class="btn btn-light icon-btn d-flex align-items-center" onclick="document.getElementById('categoria').value='SERVICOS'"><i class="bi bi-file-earmark-text"></i></button>
-        <button type="button" class="btn btn-light icon-btn d-flex align-items-center" onclick="document.getElementById('categoria').value='TRANSPORTE'"><i class="bi bi-bus-front"></i></button>
-        <button type="button" class="btn btn-light icon-btn d-flex align-items-center" onclick="document.getElementById('categoria').value='ALIMENTACAO'"><i class="bi bi-receipt"></i></button>
-        <button type="button" class="btn btn-light icon-btn d-flex align-items-center" onclick="document.getElementById('categoria').value='MERCADO'"><i class="bi bi-apple"></i></button>
-        <button type="button" class="btn btn-light icon-btn d-flex align-items-center" onclick="document.getElementById('categoria').value='LAZER'"><i class="bi bi-camera-video"></i></button>
-        <button type="button" class="btn btn-light icon-btn d-flex align-items-center" onclick="document.getElementById('categoria').value='TECNOLOGIA'"><i class="bi bi-laptop"></i></button>
-        <button type="button" class="btn btn-light icon-btn d-flex align-items-center" onclick="document.getElementById('categoria').value='OUTROS'"><i class="bi bi-plus-lg"></i></button>
+        <button type="button" class="btn btn-light icon-btn d-flex align-items-center w-100 categoria-btn" onclick="document.getElementById('categoria').value='SAUDE'"><i class="bi bi-clock me-2"></i>Saúde</button>
+        <button type="button" class="btn btn-light icon-btn d-flex align-items-center w-100 m-2 categoria-btn" onclick="document.getElementById('categoria').value='SERVICOS'"><i class="bi bi-file-earmark-text me-2"></i>Serviços</button>
+        <button type="button" class="btn btn-light icon-btn d-flex align-items-center w-100 categoria-btn" onclick="document.getElementById('categoria').value='TRANSPORTE'"><i class="bi bi-bus-front me-2"></i>Transporte</button>
+        <button type="button" class="btn btn-light icon-btn d-flex align-items-center w-100 categoria-btn" onclick="document.getElementById('categoria').value='ALIMENTACAO'"><i class="bi bi-receipt me-2"></i>Alimentação </button>
+        <button type="button" class="btn btn-light icon-btn d-flex align-items-center w-100 categoria-btn" onclick="document.getElementById('categoria').value='MERCADO'"><i class="bi bi-apple me-2"></i>Mercado</button>
+        <button type="button" class="btn btn-light icon-btn d-flex align-items-center w-100 categoria-btn" onclick="document.getElementById('categoria').value='LAZER'"><i class="bi bi-camera-video me-2"></i>Lazer</button>
+        <button type="button" class="btn btn-light icon-btn d-flex align-items-center w-100 categoria-btn" onclick="document.getElementById('categoria').value='TECNOLOGIA'"><i class="bi bi-laptop me-2"></i>Tecnologia</button>
+        <button type="button" class="btn btn-light icon-btn d-flex align-items-center w-100 categoria-btn" onclick="document.getElementById('categoria').value='OUTROS'"><i class="bi bi-plus-lg me-2"></i>Outros</button>
       </div>
 
       <input type="hidden" name="categoria" id="categoria" value="ALIMENTACAO" />
@@ -140,6 +148,22 @@
   </form>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+  // Seleciona todos os botões com a classe categoria-btn
+  const botoesCategoria = document.querySelectorAll('.categoria-btn');
+
+  botoesCategoria.forEach(botao => {
+    botao.addEventListener('click', () => {
+      // Remove a classe 'selecionado' de todos os botões
+      botoesCategoria.forEach(b => b.classList.remove('selecionado'));
+
+      // Adiciona a classe apenas no botão clicado
+      botao.classList.add('selecionado');
+    });
+  });
+</script>
+
+
 
 </body>
 </html>
