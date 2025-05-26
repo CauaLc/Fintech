@@ -127,21 +127,45 @@
 <%@ page import="br.com.fintech.projetofintech.model.Usuario" %>
 <%@ page import="br.com.fintech.projetofintech.model.Transacao" %>
 <%@ page import="java.util.List" %>
+<%@ page import="java.text.SimpleDateFormat" %>
+<%@ page import="java.util.Calendar" %>
+<%@ page import="java.time.ZoneId" %>
+<%@ page import="java.util.Date" %>
 <%
   Usuario usuario = (Usuario) session.getAttribute("usuarioLogado");
   double entradas = 0;
   double saidas = 0;
   double saldo = 0;
+
+
+  Calendar cal = Calendar.getInstance();
+  String mesAtual = new SimpleDateFormat("MMMM").format(cal.getTime()).toLowerCase();
+  mesAtual = mesAtual.substring(0, 1).toUpperCase() + mesAtual.substring(1);
+
+// Obter o mês e ano atual para comparação
+  int anoAtual = cal.get(Calendar.YEAR);
+  int mesAtualNumero = cal.get(Calendar.MONTH); // Janeiro = 0, Dezembro = 11
+
   List<Transacao> transacoes = (List<Transacao>) request.getAttribute("transacoes");
   if (usuario == null) {
     response.sendRedirect("login.jsp");
     return;
   }
   for (Transacao t : transacoes) {
-    if (t.getTipoTransacao().equals("ENTRADA")){
-      entradas = entradas + t.getValor();
-    }else {
-      saidas = saidas + t.getValor();
+    // Obter a data da transação
+    Calendar calTransacao = Calendar.getInstance();
+    calTransacao.setTime(Date.from(t.getDataTransacao().atStartOfDay(ZoneId.systemDefault()).toInstant())); // Assumindo que Transacao tem um método getData()
+
+    int anoTransacao = calTransacao.get(Calendar.YEAR);
+    int mesTransacao = calTransacao.get(Calendar.MONTH);
+
+    // Verificar se a transação é do mês e ano atual
+    if (anoTransacao == anoAtual && mesTransacao == mesAtualNumero) {
+      if (t.getTipoTransacao().equals("ENTRADA")) {
+        entradas = entradas + t.getValor();
+      } else {
+        saidas = saidas + t.getValor();
+      }
     }
   }
   saldo = entradas - saidas;
@@ -152,7 +176,7 @@
 
 
   <div class="card-saldo text-center">
-    <h6 class="text-muted">Outubro <i class="bi bi-chevron-down"></i></h6>
+    <h6 class="text-muted"> <%= mesAtual %><i class="bi bi-chevron-down"></i></h6>
     <h4><strong>Saldo: R$<%= saldo %> </strong></h4>
     <div class="d-flex justify-content-around mt-3">
       <div class="text-success">
@@ -192,13 +216,23 @@
       <%
         int limite = Math.min(transacoes.size(), 3);
         for (int i = 0; i < limite; i++) {
-          Transacao t = transacoes.get(i);
+
+          Calendar calTransacao = Calendar.getInstance();
+          calTransacao.setTime(Date.from(transacoes.get(i).getDataTransacao().atStartOfDay(ZoneId.systemDefault()).toInstant())); // Assumindo que Transacao tem um método getData()
+
+          int anoTransacao = calTransacao.get(Calendar.YEAR);
+          int mesTransacao = calTransacao.get(Calendar.MONTH);
+
+          // Verificar se a transação é do mês e ano atual
+          if (anoTransacao == anoAtual && mesTransacao == mesAtualNumero) {
+            Transacao t = transacoes.get(i);
+
       %>
       <li class="list-group-item d-flex justify-content-between align-items-center px-0">
         <div><i class="bi bi-house-door"></i> <%=t.getNomeTransacao()%></div>
         <span><strong>R$ <%= t.getValor()%></strong></span>
       </li>
-      <%
+      <%}
         }
       %>
 

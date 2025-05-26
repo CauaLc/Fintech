@@ -98,9 +98,7 @@
 <body>
 
 <div class="text-center py-2 bg-white border-bottom">
-  <small>
-    &lt; <%= mesAtual %> &gt;
-  </small>
+  <h6 class="text-muted">&lt; <%= mesAtual %> &gt; <i class="bi bi-chevron-down"></i></h6>
   <div class="mt-2">
     <a href="<%= "./despesas?idUsuario=" + usuario.getId() +"&tipo=SAIDA" %>" class="text-decoration-none <%= "SAIDA".equals(tipoTransacao) ? "active-tab" : "text-dark" %> mx-2">Despesas</a>
     <a href="<%= "./despesas?idUsuario=" + usuario.getId() +"&tipo=ENTRADA" %>" class="text-decoration-none <%= "ENTRADA".equals(tipoTransacao) ? "active-tab" : "text-dark" %> mx-2">Receitas</a>

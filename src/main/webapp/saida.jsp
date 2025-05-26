@@ -63,10 +63,10 @@
       color: white !important;
     }
 
-    .categoria-btn.selecionado {
-      background-color: #FFD8A8 !important; /* Laranja clarinho */
-      border-color: #FFA94D !important;
+    .btn-categoria.selecionado {
+      background-color: #ADD8E6 !important;
       color: #000 !important;
+      border-color: #ADD8E6 !important;
     }
 
 
@@ -113,14 +113,14 @@
     <div class="form-section">
       <h5 class="mb-2">Categorias</h5>
       <div class="category-grid">
-        <button type="button" class="btn btn-light icon-btn d-flex align-items-center w-100 categoria-btn" onclick="document.getElementById('categoria').value='SAUDE'"><i class="bi bi-clock me-2"></i>Saúde</button>
-        <button type="button" class="btn btn-light icon-btn d-flex align-items-center w-100 m-2 categoria-btn" onclick="document.getElementById('categoria').value='SERVICOS'"><i class="bi bi-file-earmark-text me-2"></i>Serviços</button>
-        <button type="button" class="btn btn-light icon-btn d-flex align-items-center w-100 categoria-btn" onclick="document.getElementById('categoria').value='TRANSPORTE'"><i class="bi bi-bus-front me-2"></i>Transporte</button>
-        <button type="button" class="btn btn-light icon-btn d-flex align-items-center w-100 categoria-btn" onclick="document.getElementById('categoria').value='ALIMENTACAO'"><i class="bi bi-receipt me-2"></i>Alimentação </button>
-        <button type="button" class="btn btn-light icon-btn d-flex align-items-center w-100 categoria-btn" onclick="document.getElementById('categoria').value='MERCADO'"><i class="bi bi-apple me-2"></i>Mercado</button>
-        <button type="button" class="btn btn-light icon-btn d-flex align-items-center w-100 categoria-btn" onclick="document.getElementById('categoria').value='LAZER'"><i class="bi bi-camera-video me-2"></i>Lazer</button>
-        <button type="button" class="btn btn-light icon-btn d-flex align-items-center w-100 categoria-btn" onclick="document.getElementById('categoria').value='TECNOLOGIA'"><i class="bi bi-laptop me-2"></i>Tecnologia</button>
-        <button type="button" class="btn btn-light icon-btn d-flex align-items-center w-100 categoria-btn" onclick="document.getElementById('categoria').value='OUTROS'"><i class="bi bi-plus-lg me-2"></i>Outros</button>
+        <button type="button" class="btn btn-light icon-btn d-flex align-items-center w-100 btn-categoria" onclick="document.getElementById('categoria').value='SAUDE'"><i class="bi bi-clock me-2"></i>Saúde</button>
+        <button type="button" class="btn btn-light icon-btn d-flex align-items-center w-100 m-2 btn-categoria" onclick="document.getElementById('categoria').value='SERVICOS'"><i class="bi bi-file-earmark-text me-2"></i>Serviços</button>
+        <button type="button" class="btn btn-light icon-btn d-flex align-items-center w-100 btn-categoria" onclick="document.getElementById('categoria').value='TRANSPORTE'"><i class="bi bi-bus-front me-2"></i>Transporte</button>
+        <button type="button" class="btn btn-light icon-btn d-flex align-items-center w-100 btn-categoria" onclick="document.getElementById('categoria').value='ALIMENTACAO'"><i class="bi bi-receipt me-2"></i>Alimentação </button>
+        <button type="button" class="btn btn-light icon-btn d-flex align-items-center w-100 btn-categoria" onclick="document.getElementById('categoria').value='MERCADO'"><i class="bi bi-apple me-2"></i>Mercado</button>
+        <button type="button" class="btn btn-light icon-btn d-flex align-items-center w-100 btn-categoria" onclick="document.getElementById('categoria').value='LAZER'"><i class="bi bi-camera-video me-2"></i>Lazer</button>
+        <button type="button" class="btn btn-light icon-btn d-flex align-items-center w-100 btn-categoria" onclick="document.getElementById('categoria').value='TECNOLOGIA'"><i class="bi bi-laptop me-2"></i>Tecnologia</button>
+        <button type="button" class="btn btn-light icon-btn d-flex align-items-center w-100 btn-categoria" onclick="document.getElementById('categoria').value='OUTROS'"><i class="bi bi-plus-lg me-2"></i>Outros</button>
       </div>
 
       <input type="hidden" name="categoria" id="categoria" value="ALIMENTACAO" />
@@ -164,6 +164,15 @@
 </script>
 
 
+<script>
+  const botoesCategoria = document.querySelectorAll('.btn-categoria');
 
+  botoesCategoria.forEach(botao => {
+    botao.addEventListener('click', () => {
+      botoesCategoria.forEach(b => b.classList.remove('selecionado'));
+      botao.classList.add('selecionado');
+    });
+  });
+</script>
 </body>
 </html>
